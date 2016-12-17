@@ -1,5 +1,5 @@
-/**
- * Calculator.
+/**.
+ * Calculator
  * @author avorotov
  * @version $id$
  */
