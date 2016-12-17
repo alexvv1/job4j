@@ -1,0 +1,34 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>	
+	<groupId>ru.avorotov</groupId>
+	<artifactId>junior</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<name>junior</name>
+	<url>https://github.com/alexvv1/alexvv.git</url>
+	
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEnecoding>UTF-8</project.build.sourceEnecoding>
+	</properties>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<compilerVersion>1.8</compilerVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<modules>
+		<module>chapter_001</module>
+	</modules>
+	
+	
+</project>
