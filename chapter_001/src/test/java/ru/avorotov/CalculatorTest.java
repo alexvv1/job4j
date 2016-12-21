@@ -5,7 +5,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Тесты для класса Calculator.
+ * РўРµСЃС‚С‹ РґР»СЏ РєР»Р°СЃСЃР° Calculator.
  *
  * @author avorotov
  * @version 1.0
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
 public class CalculatorTest {
 
 	/**
-	 * Тест проверяет сложение двух чисел.
+	 * РўРµСЃС‚ РїСЂРѕРІРµСЂСЏРµС‚ СЃР»РѕР¶РµРЅРёРµ РґРІСѓС… С‡РёСЃРµР».
      */
 	@Test
 	public void whenTwoNumberAddToReturnResult() {
@@ -29,7 +29,7 @@ public class CalculatorTest {
 		assertThat(calculator.getResult(), is(targetResult));
 	}
 	/**
-	 * Тест проверяет вычитание двух чисел.
+	 * РўРµСЃС‚ РїСЂРѕРІРµСЂСЏРµС‚ РІС‹С‡РёС‚Р°РЅРёРµ РґРІСѓС… С‡РёСЃРµР».
      */
 	@Test
 	public void whenTwoNumberSubtractToReturnResult() {
@@ -44,7 +44,7 @@ public class CalculatorTest {
 		assertThat(calculator.getResult(), is(targetResult));
 	}
 	/**
-	 * Тест проверяет умножение двух чисел.
+	 * РўРµСЃС‚ РїСЂРѕРІРµСЂСЏРµС‚ СѓРјРЅРѕР¶РµРЅРёРµ РґРІСѓС… С‡РёСЃРµР».
      */
 	@Test
 	public void whenTwoNumberMultipleToReturnResult() {
@@ -59,7 +59,7 @@ public class CalculatorTest {
 		assertThat(calculator.getResult(), is(targetResult));
 	}
 	/**
-	 * Тест проверяет деление двух чисел.
+	 * РўРµСЃС‚ РїСЂРѕРІРµСЂСЏРµС‚ РґРµР»РµРЅРёРµ РґРІСѓС… С‡РёСЃРµР».
      */
 	@Test
 	public void whenTwoNumberDivToReturnResult() {
@@ -74,7 +74,7 @@ public class CalculatorTest {
 		assertThat(calculator.getResult(), is(targetResult));
 	}
 	/**
-	 * Тест проверяет что при делении на ноль throw Exception.
+	 * РўРµСЃС‚ РїСЂРѕРІРµСЂСЏРµС‚ С‡С‚Рѕ РїСЂРё РґРµР»РµРЅРёРё РЅР° РЅРѕР»СЊ throw Exception.
      */
 	@Test(expected = ArithmeticException.class)
 	public void whenNumberDivZeroToException() {

@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
  */
 public class CalculateTest {
 	/**
-     * Тестируем  "Hello World!".
+     * РўРµСЃС‚РёСЂСѓРµРј  "Hello World!".
      */
 	@Test
 	public void whenRunMainToPrintHelloWorld() {
