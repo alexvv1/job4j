@@ -5,6 +5,7 @@ import org.junit.Test;
 
 /**
  * Треугольник.
+ *
  * @author avorotov
  * @since 19.12.2016
  * @version 1
@@ -12,6 +13,7 @@ import org.junit.Test;
 public class TriangleTest {
     /**
      * Площадь треугольника.
+     *
      * @throws Exception Невозможно построить треугольник -> Exception.
      */
     @Test
@@ -36,27 +38,29 @@ public class TriangleTest {
         //Asert
         Assert.assertEquals(expectedArea, area, delta);
     }
+
     /**
      * Невозможно построить треугольник -> Exception.
+     *
      * @throws Exception Невозможно построить треугольник -> Exception.
      */
     @Test(expected = Exception.class)
     public void whenNotExistTriangleThenException() throws Exception {
         //Arrange
-         //Вершина A
-         final double ax = 1;
-         final double ay = 1;
-         final Point a = new Point(ax, ay);
-         //Вершина B
-         final double bx = 3;
-         final double by = 3;
-         final Point b = new Point(bx, by);
-         //Вершина C
-         final double cx = 6;
-         final double cy = 6;
-         final Point c = new Point(cx, cy);
-         //Act
-         new Triangle(a, b, c).area();
-         //Asert
+        //Вершина A
+        final double ax = 1;
+        final double ay = 1;
+        final Point a = new Point(ax, ay);
+        //Вершина B
+        final double bx = 3;
+        final double by = 3;
+        final Point b = new Point(bx, by);
+        //Вершина C
+        final double cx = 6;
+        final double cy = 6;
+        final Point c = new Point(cx, cy);
+        //Act
+        new Triangle(a, b, c).area();
+        //Asert
     }
 }

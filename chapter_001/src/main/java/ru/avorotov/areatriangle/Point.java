@@ -12,30 +12,10 @@ public class Point {
      * Координата x.
      */
     private double x;
-
-    /**
-     * Координата x.
-     *
-     * @return Координата x
-     */
-    public double getX() {
-        return x;
-    }
-
-    /**
-     * Координата y.
-     *
-     * @return Координата y.
-     */
-    private double getY() {
-        return y;
-    }
-
     /**
      * Координата y.
      */
     private double y;
-
     /**
      * Конструктор. Создает точку по координатам.
      *
@@ -46,7 +26,22 @@ public class Point {
         this.x = x;
         this.y = y;
     }
-
+    /**
+     * Координата x.
+     *
+     * @return Координата x
+     */
+    public double getX() {
+        return x;
+    }
+    /**
+     * Координата y.
+     *
+     * @return Координата y.
+     */
+    private double getY() {
+        return y;
+    }
     /**
      * Расстояние между текущей точкой и переданной в параметр.
      *

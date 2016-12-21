@@ -33,28 +33,6 @@ public class Triangle {
         this.b = b;
         this.c = c;
     }
-/*
-    *//**
-     * Вершина A
-     *//*
-    public Point getA() {
-        return a;
-    }
-
-    *//**
-     * Вершина B
-     *//*
-    public Point getB() {
-        return b;
-    }
-
-    *//**
-     * Вершина C
-     *//*
-    public Point getC() {
-        return c;
-    }*/
-
     /**
      * Площадь треугольника.
      *
