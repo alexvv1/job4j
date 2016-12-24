@@ -21,4 +21,25 @@ public class Turn {
             array[array.length - 1 - i] = temp;
         }
     }
+
+    /**
+     * Сортировка массива методом перестановки.
+     * @param array Исходный массив
+     */
+    public void sortSelection(int[] array) {
+        //Цикл по массиву
+        for (int index = 0; index < array.length - 1; index++) {
+            int minIndex = index;
+            //находим индекс минимального элемента в хвосте списка
+            for (int j = minIndex + 1; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            //производим обмен минимального элемента со значением из текущей позиции
+            int minValue = array[index];
+            array[index] = array[minIndex];
+            array[minIndex] = minValue;
+        }
+    }
 }
