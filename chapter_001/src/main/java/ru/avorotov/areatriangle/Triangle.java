@@ -43,9 +43,9 @@ public class Triangle {
         if (!existTriangle()) {
             throw new Exception("Not exist triangle");
         }
-        double ab = a.distanceTo(b);
-        double bc = b.distanceTo(c);
-        double ca = c.distanceTo(a);
+        double ab = this.a.distanceTo(this.b);
+        double bc = this.b.distanceTo(this.c);
+        double ca = this.c.distanceTo(this.a);
         double p = (ab + bc + ca) / 2; //Полупериметр
         double area = Math.sqrt(p * (p - ab) * (p - bc) * (p - ca));
         return area;
@@ -56,9 +56,9 @@ public class Triangle {
      * @return Возможно ли построить треугольник.
      */
     private boolean existTriangle() {
-        double ab = a.distanceTo(b);
-        double bc = b.distanceTo(c);
-        double ca = c.distanceTo(a);
+        double ab = this.a.distanceTo(this.b);
+        double bc = this.b.distanceTo(this.c);
+        double ca = this.c.distanceTo(this.a);
         if ((ab + bc > ca) && (bc + ca > ab) && (ab + ca > bc)) {
             return true;
         }

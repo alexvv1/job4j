@@ -32,7 +32,7 @@ public class Point {
      * @return Координата x
      */
     public double getX() {
-        return x;
+        return this.x;
     }
     /**
      * Координата y.
