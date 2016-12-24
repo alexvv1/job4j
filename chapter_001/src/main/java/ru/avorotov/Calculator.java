@@ -17,7 +17,7 @@ public class Calculator {
 	 * @param second Второе число для сложения
      */
 	public void add(double first, double second) {
-		result = first + second;
+		this.result = first + second;
 	}
 	/**
      * Операция разности двух чисел.
@@ -25,7 +25,7 @@ public class Calculator {
 	 * @param second Вычитаемое
      */
 	public void subtract(double first, double second) {
-		result = first - second;
+		this.result = first - second;
 	}
 	/**
      * Операция умножения двух чисел.
@@ -33,7 +33,7 @@ public class Calculator {
 	 * @param second Второй множитель
      */
 	public void multiple(double first, double second) {
-		result = first * second;
+		this.result = first * second;
 	}
 	/**
      * Операция деления первого числа на второе.
@@ -42,7 +42,7 @@ public class Calculator {
      */
 	public void div(double first, double second) {
 		if (second != 0) {
-				result = first / second;
+				this.result = first / second;
 		} else {
 			throw new ArithmeticException("division by zero");
 		}
@@ -52,6 +52,6 @@ public class Calculator {
 	 * @return Возвращает результат арифметической операции
      */
 	public double getResult() {
-		return result;
+		return this.result;
 	}
 }
