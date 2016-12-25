@@ -36,7 +36,7 @@ public class TurnTest {
         Assert.assertArrayEquals(expectedArray, array);
     }
     /**
-     * Тестирование Сортировка массива методом пузырька. Sucess path.
+     * Тестирование Сортировка массива методом пузырька. Sucсess path.
      */
     @Test
     public void whenBubbleSortSuccessPathThenSortArray() {
@@ -47,5 +47,19 @@ public class TurnTest {
         //Assert
         final int[] expectedArray = {2, 3, 5, 5, 6, 8};
         Assert.assertArrayEquals(expectedArray, array);
+    }
+
+    /**
+     * Тестирование Транспонирование матрицы. Sucсess path.
+     */
+    @Test
+    public void whenTransposeMatrixSuccessPathThenTransposeMatrix(){
+        //Assert
+        final int[][] array = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        //Act
+        new Turn().rotate(array);
+        //Assert
+        final int[][] expectedArray = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
+        Assert.assertArrayEquals(expectedArray,new Turn().rotate(array));
     }
 }

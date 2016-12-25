@@ -63,4 +63,19 @@ public class Turn {
         }
     }
 
+    /**
+     * Поворот двухмерного массива на 90 градусов
+     *
+     * @param array Исходный массив
+     * @return Повернутый массив на 90 градусов
+     */
+    public int[][] rotate(int[][] array) {
+        int[][] temp = new int[array.length][array.length];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                temp[j][array.length - i - 1] = array[i][j];
+            }
+        }
+        return temp;
+    }
 }
