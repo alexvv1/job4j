@@ -62,4 +62,18 @@ public class TurnTest {
         final int[][] expectedArray = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
         Assert.assertArrayEquals(expectedArray, rotateArray);
     }
+
+    /**
+     * Тестирование Удаляет дубликаты.
+     */
+    @Test
+    public void whenDublicateSuccessPathThenReturnClearedArray() {
+        //Arrange
+        final String[] array = {"22", "33", "44", "55", "22", "44"};
+        //Act
+        final String[] removeDuplicateArray = new Turn().removeDuplicate(array);
+        //Assert
+        final String[] expectedArray = {"22", "33", "44", "55"};
+        Assert.assertArrayEquals(expectedArray, removeDuplicateArray);
+    }
 }

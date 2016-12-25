@@ -1,5 +1,7 @@
 package ru.avorotov.Arrays;
 
+import java.util.Arrays;
+
 /**
  * Очередь.
  *
@@ -77,5 +79,29 @@ public class Turn {
             }
         }
         return temp;
+    }
+
+    /**
+     * Удаляет дубликаты.
+     * @param array Исходный массив
+     * @return Массив изкоторого удалены дубликаты
+     */
+    public String[] removeDuplicate(String[] array) {
+        int sizeClearedArray = 0;
+        String[] clearedArray = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            boolean isDublicate = false;
+            for (int j = 0; j < sizeClearedArray; j++) {
+                if (clearedArray[j].equals(array[i])) {
+                    isDublicate = true;
+                    break;
+                }
+            }
+            if (!isDublicate) {
+                clearedArray[sizeClearedArray++] = array[i];
+            }
+        }
+        clearedArray = Arrays.copyOf(clearedArray, sizeClearedArray);
+        return clearedArray;
     }
 }
