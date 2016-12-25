@@ -53,13 +53,13 @@ public class TurnTest {
      * Тестирование Транспонирование матрицы. Sucсess path.
      */
     @Test
-    public void whenTransposeMatrixSuccessPathThenTransposeMatrix(){
+    public void whenRotateSuccessPathThenRotate() {
         //Assert
         final int[][] array = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         //Act
-        new Turn().rotate(array);
+        final int[][] rotateArray = new Turn().rotate(array);
         //Assert
         final int[][] expectedArray = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
-        Assert.assertArrayEquals(expectedArray,new Turn().rotate(array));
+        Assert.assertArrayEquals(expectedArray, rotateArray);
     }
 }
