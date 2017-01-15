@@ -11,11 +11,11 @@ public class Paint {
     /**
      * Символ для рисования.
      */
-    private String symbolPaint = "^";
+    private static final String symbolPaint = "^";
     /**
      * Символ ппробела между символами рисования.
      */
-    private String symbolSpace = " ";
+    private static final String symbolSpace = " ";
 
     /**
      * Возвращает пирамиду в псевдографике.
