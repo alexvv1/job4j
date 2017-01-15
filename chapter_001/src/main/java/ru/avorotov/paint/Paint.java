@@ -11,11 +11,11 @@ public class Paint {
     /**
      * Символ для рисования.
      */
-    private static final String symbolPaint = "^";
+    private static final String SYMBOL_PAINT = "^";
     /**
      * Символ ппробела между символами рисования.
      */
-    private static final String symbolSpace = " ";
+    private static final String SYMBOL_SPACE = " ";
 
     /**
      * Возвращает пирамиду в псевдографике.
@@ -31,11 +31,11 @@ public class Paint {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 1; i < hight + 1; i++) {
             for (int j = 0; j < hight - i; j++) {
-                stringBuilder.append(symbolSpace);
+                stringBuilder.append(SYMBOL_SPACE);
             }
-            stringBuilder.append(symbolPaint);
+            stringBuilder.append(SYMBOL_PAINT);
             for (int k = 1; k < i; k++) {
-                stringBuilder.append(symbolSpace + symbolPaint);
+                stringBuilder.append(SYMBOL_SPACE + SYMBOL_PAINT);
             }
             if (i < hight) {
                 stringBuilder.append(System.lineSeparator());
