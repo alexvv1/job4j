@@ -18,10 +18,10 @@ public class PaintTest {
         final int h = 5;
         //Act
         String piramid = new Paint().piramid(h);
-        String piramidLine1 = "    ^    ";
-        String piramidLine2 = "   ^ ^   ";
-        String piramidLine3 = "  ^ ^ ^  ";
-        String piramidLine4 = " ^ ^ ^ ^ ";
+        String piramidLine1 = "    ^";
+        String piramidLine2 = "   ^ ^";
+        String piramidLine3 = "  ^ ^ ^";
+        String piramidLine4 = " ^ ^ ^ ^";
         String piramidLine5 = "^ ^ ^ ^ ^";
         String expectedPiramid = new StringBuilder().append(piramidLine1)
                 .append(System.lineSeparator())
