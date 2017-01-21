@@ -21,16 +21,16 @@ public class OriginContainsSub {
         char[] subChars = sub.toCharArray();
         boolean originContainsSub = false;
         //Цикл по подстроке origin
-        for (int originCharI = 0; originCharI < originChars.length; originCharI++) {
+        for (int i = 0; i < originChars.length; i++) {
             //Ищем первое совпадение текущего символа origin и первого символа sub
-            if (originChars[originCharI] == subChars[0]) {
+            if (originChars[i] == subChars[0]) {
                 //Необходимо найти чтобы все символы sub совподали с символами origin
                 //начиная с симаола с индексом originCharI
-                for (int subCharI = 0; subCharI < subChars.length; subCharI++) {
-                    if (originChars[originCharI + subCharI] != subChars[subCharI]) {
+                for (int j = 0; j < subChars.length; j++) {
+                    if (originChars[i + j] != subChars[j]) {
                         break;
                     }
-                    originContainsSub = subCharI == subChars.length - 1;
+                    originContainsSub = j == subChars.length - 1;
                 }
             }
             if (originContainsSub) {
