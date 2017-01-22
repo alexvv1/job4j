@@ -6,10 +6,17 @@ import java.time.LocalDateTime;
  * Класс заявка.
  */
 public class Claim {
+    public Claim(String name, String description) {
+        this.name = name;
+        this.description = description;
+        createDate = LocalDateTime.now();
+    }
+
     /**
+
      * Идентификатор.
      */
-    private int id;
+    private String id;
     /**
      * Имя.
      */
@@ -34,15 +41,6 @@ public class Claim {
      */
     public LocalDateTime getCreateDate() {
         return this.createDate;
-    }
-
-    /**
-     * Возвращает Дата создания.
-     *
-     * @param createDate Дата создания.
-     */
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
     }
 
     /**
@@ -104,7 +102,7 @@ public class Claim {
      *
      * @return Идентификатор.
      */
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -113,7 +111,7 @@ public class Claim {
      *
      * @param id Идентификатор.
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }
