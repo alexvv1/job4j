@@ -17,16 +17,22 @@ public class Tracker {
      */
     private int countClaim;
 
-    private Random RN = new Random();
+    /**
+     * Генератор случайных чисел.
+     */
+    private final Random rn = new Random();
 
+    /**
+     * Конструктор.
+     */
     public Tracker() {
         this.claims = new Claim[0];
     }
 
     /**
-     * Увеличивает размер хранящего массива
+     * Увеличивает размер хранящего массива.
      *
-     * @param size
+     * @param size Необходимый размер массива.
      */
     private void ensureCapacity(int size) {
         if (claims.length < size) {
@@ -36,6 +42,9 @@ public class Tracker {
 
     /**
      * Добавить Заявку.
+     *
+     * @param claim Заявка.
+     * @return Добавленная заявка.
      */
     public Claim add(Claim claim) {
         claim.setId(this.generateId());
@@ -44,8 +53,12 @@ public class Tracker {
         return claim;
     }
 
+    /**
+     * Сгенерировать уникальный идентификатор.
+     * @return Уникальный идентификатор.
+     */
     private String generateId() {
-        return String.valueOf(System.currentTimeMillis()) + RN.nextInt();
+        return String.valueOf(System.currentTimeMillis()) + rn.nextInt();
     }
 
     /**
@@ -78,7 +91,7 @@ public class Tracker {
             } else {
                 newClaims[i] = this.claims[i];
             }
-            findClaim = !findClaim && this.claims[i].getId() == claim.getId();
+            findClaim = !findClaim && this.claims[i].getId().equals(claim.getId());
         }
         this.claims = newClaims;
     }
@@ -96,22 +109,22 @@ public class Tracker {
     /**
      * Найти заявку по имени.
      *
-     * @param name
+     * @param name Наименование заявки.
      * @return Заявка.
      */
     public Claim[] findByName(String name) {
-        Claim findClaim[] = null;
+        Claim[] findClaim = null;
         int count = 0;
-        for (int i =0; i < this.countClaim; i++) {
+        for (int i = 0; i < this.countClaim; i++) {
             if (name.equals(claims[i].getName())) {
                 count++;
             }
         }
 
-        if(count >0) {
+        if (count > 0) {
             findClaim = new Claim[count];
             count = 0;
-            for (int i =0; i < this.countClaim; i++) {
+            for (int i = 0; i < this.countClaim; i++) {
                 if (name.equals(claims[i].getName())) {
                     findClaim[count] = claims[i];
                     count++;
@@ -130,7 +143,7 @@ public class Tracker {
      */
     public Claim findById(String id) {
         Claim findClaim = null;
-        for (int i =0; i < this.countClaim; i++) {
+        for (int i = 0; i < this.countClaim; i++) {
             if (id.equals(claims[i].getId())) {
                 findClaim = claims[i];
             }

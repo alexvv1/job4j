@@ -23,7 +23,7 @@ public class TrackerTest {
         tracker.add(claim2);
         tracker.add(claim3);
         //Assert
-        int expectedSizeClaims = 3;
+        final int expectedSizeClaims = 3;
         Claim[] actualClaims = tracker.findAll();
         Assert.assertEquals(actualClaims.length, expectedSizeClaims);
     }

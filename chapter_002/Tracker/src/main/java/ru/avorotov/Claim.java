@@ -6,6 +6,11 @@ import java.time.LocalDateTime;
  * Класс заявка.
  */
 public class Claim {
+    /**
+     * Конструктор.
+     * @param name Наименование заявки.
+     * @param description Описание заявки.
+     */
     public Claim(String name, String description) {
         this.name = name;
         this.description = description;
