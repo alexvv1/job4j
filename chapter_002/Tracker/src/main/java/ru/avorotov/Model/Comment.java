@@ -1,4 +1,4 @@
-package ru.avorotov;
+package ru.avorotov.Model;
 
 /**
  * Класс Комментарий.

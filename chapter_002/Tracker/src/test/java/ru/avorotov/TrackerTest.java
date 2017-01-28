@@ -2,6 +2,7 @@ package ru.avorotov;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.avorotov.Model.Claim;
 
 /**
  * Тестирование работы с Заявками.

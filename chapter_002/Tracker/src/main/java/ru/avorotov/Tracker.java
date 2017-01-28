@@ -1,12 +1,14 @@
 package ru.avorotov;
 
+import ru.avorotov.Model.Claim;
+
 import java.util.Arrays;
 import java.util.Random;
 
 /**
  * Класс для работы с заявками.
  */
-public class Tracker {
+public class Tracker implements ITracker {
     /**
      * Список Заявок.
      */
