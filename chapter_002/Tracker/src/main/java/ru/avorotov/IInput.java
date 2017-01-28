@@ -1,7 +1,7 @@
 package ru.avorotov;
 
 /**
- * Ввод данных
+ * Ввод данных.
  */
 public interface IInput {
     /**
@@ -10,4 +10,11 @@ public interface IInput {
      * @return Ответ на вопрос.
      */
     String ask(String qestion);
+
+    /**
+     * Спросить.
+     * @param qestion Вопрос
+     * @return Ответ на вопрос в формате boolean.
+     */
+    boolean askBoolean(String qestion);
 }

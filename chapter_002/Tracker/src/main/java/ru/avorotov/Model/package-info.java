@@ -1,5 +1,5 @@
 /**
- * Tracker.
+ * Model Tracker.
  * @author avorotov
  * @version $id$
  */

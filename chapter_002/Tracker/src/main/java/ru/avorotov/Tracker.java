@@ -3,7 +3,6 @@ package ru.avorotov;
 import ru.avorotov.Model.Claim;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Класс для работы с заявками.
@@ -20,9 +19,9 @@ public class Tracker implements ITracker {
     private int countClaim;
 
     /**
-     * Генератор случайных чисел.
+     *
      */
-    private final Random rn = new Random();
+    private int position = 0;
 
     /**
      * Конструктор.
@@ -60,7 +59,7 @@ public class Tracker implements ITracker {
      * @return Уникальный идентификатор.
      */
     private String generateId() {
-        return String.valueOf(System.currentTimeMillis()) + rn.nextInt();
+        return String.valueOf(++position);
     }
 
     /**
@@ -71,6 +70,7 @@ public class Tracker implements ITracker {
     public void update(Claim claim) {
         for (int i = 0; i < countClaim; i++) {
             if (claim.getId() == this.claims[i].getId()) {
+                claim.setId(this.claims[i].getId());
                 this.claims[i] = claim;
                 break;
             }
