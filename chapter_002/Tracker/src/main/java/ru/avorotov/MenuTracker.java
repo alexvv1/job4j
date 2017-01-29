@@ -12,7 +12,7 @@ public class MenuTracker {
     /**
      * Tracker.
      */
-    private final Tracker tracker;
+    private final ITracker tracker;
     /**
      * Количество действий.
      */
@@ -32,7 +32,7 @@ public class MenuTracker {
      * @param input Ввод/вывод.
      * @param tracker Tracker.
      */
-    public MenuTracker(IInput input, Tracker tracker) {
+    public MenuTracker(IInput input, ITracker tracker) {
         this.input = input;
         this.tracker = tracker;
 
@@ -62,6 +62,17 @@ public class MenuTracker {
         this.actions[position] = new Actions.DeleteClaimAction(position);
     }
 
+    /**
+     * Возвращает ключи доступных действий.
+     * @return Ключи доступных действий
+     */
+    public int[] getExistKeysAction() {
+        int[] existKeysAction = new int[actions.length - 1];
+        for (int i = 1; i < actions.length; i++) {
+            existKeysAction[i - 1] = actions[i].key();
+        }
+            return existKeysAction;
+    }
     /**
      * Показать меню.
      */

@@ -6,15 +6,24 @@ package ru.avorotov;
 public interface IInput {
     /**
      * Спросить.
-     * @param qestion Вопрос
+     * @param question Вопрос
      * @return Ответ на вопрос.
      */
-    String ask(String qestion);
+    String ask(String question);
 
     /**
      * Спросить.
-     * @param qestion Вопрос
+     * @param question Вопрос
+     * @param range Ключи допустимых действий.
+     * @return Ответ на вопрос.
+     */
+    int ask(String question, int[] range);
+
+
+    /**
+     * Спросить.
+     * @param question Вопрос
      * @return Ответ на вопрос в формате boolean.
      */
-    boolean askBoolean(String qestion);
+    boolean askBoolean(String question);
 }

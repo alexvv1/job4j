@@ -3,6 +3,7 @@ package ru.avorotov;
 import ru.avorotov.Model.Claim;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * Класс для работы с заявками.
@@ -87,13 +88,15 @@ public class Tracker implements ITracker {
         int oldCountClaim = this.countClaim;
         Claim[] newClaims = new Claim[--this.countClaim];
         for (int i = 0; i < oldCountClaim; i++) {
-
+            if (!findClaim && i == oldCountClaim - 1) {
+                break;
+            }
             if (findClaim) {
                 newClaims[i - 1] = this.claims[i];
             } else {
                 newClaims[i] = this.claims[i];
             }
-            findClaim = !findClaim && this.claims[i].getId().equals(claim.getId());
+            findClaim = findClaim || this.claims[i].getId().equals(claim.getId());
         }
         this.claims = newClaims;
     }
@@ -143,14 +146,14 @@ public class Tracker implements ITracker {
      * @param id Идентификатор заявки.
      * @return Заявка.
      */
-    public Claim findById(String id) {
+    public Optional<Claim> findById(String id) {
         Claim findClaim = null;
         for (int i = 0; i < this.countClaim; i++) {
             if (id.equals(claims[i].getId())) {
                 findClaim = claims[i];
+                break;
             }
-            break;
         }
-        return findClaim;
+        return Optional.ofNullable(findClaim);
     }
 }

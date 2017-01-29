@@ -11,22 +11,28 @@ public class StartUI {
     private IInput input;
 
     /**
+     * Tracker.
+     */
+    private ITracker tracker;
+
+    /**
      * Конструктор.
      * @param input Ввод/вывод.
+     * @param tracker Tracker.
      */
-    public StartUI(IInput input) {
+    public StartUI(IInput input, ITracker tracker) {
         this.input = input;
+        this.tracker = tracker;
     }
 
     /**
      * Старт выполнения программы.
      */
     public void start() {
-        Tracker tracker = new Tracker();
         MenuTracker menuTracker = new MenuTracker(this.input, tracker);
         do {
             menuTracker.show();
-            int menuKey = Integer.valueOf(input.ask("Выберите, пожалуйста, пункт меню: "));
+            int menuKey = input.ask("Выберите, пожалуйста, пункт меню: ", menuTracker.getExistKeysAction());
             menuTracker.select(menuKey);
         } while (!this.input.askBoolean("Выйти?(да) "));
     }
@@ -36,6 +42,6 @@ public class StartUI {
      * @param args Аргументы.
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput()).start();
+        new StartUI(new ConsoleInput(), new Tracker()).start();
     }
 }

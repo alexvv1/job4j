@@ -2,6 +2,8 @@ package ru.avorotov;
 
 import ru.avorotov.Model.Claim;
 
+import java.util.Optional;
+
 /**
  * Created by SSS on 28.01.2017.
  */
@@ -50,5 +52,5 @@ public interface ITracker {
      * @param id Идентификатор заявки.
      * @return Заявка.
      */
-    Claim findById(String id);
+    Optional<Claim> findById(String id);
 }

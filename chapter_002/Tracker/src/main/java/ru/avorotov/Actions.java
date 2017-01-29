@@ -3,6 +3,8 @@ package ru.avorotov;
 import ru.avorotov.Model.Claim;
 import ru.avorotov.Model.Comment;
 
+import java.util.Optional;
+
 /**
  * Действия.
  */
@@ -91,13 +93,13 @@ public class Actions {
         @Override
         public void execute(IInput input, ITracker tracker) {
             String id = input.ask("Введите, пожалуйста, номер заявки: ");
-            Claim findedClaim = tracker.findById(id);
-            if (findedClaim != null) {
-                System.out.println(String.format("Идентификатор - %s", findedClaim.getId()));
-                System.out.println(String.format("Наименование - %s", findedClaim.getName()));
-                System.out.println(String.format("Описание - %s", findedClaim.getDescription()));
-                System.out.println(String.format("Дата создания - %s", findedClaim.getCreateDate()));
-                Comment[] comments = findedClaim.getComments();
+            Optional<Claim> findedClaim = tracker.findById(id);
+            if (findedClaim.isPresent()) {
+                System.out.println(String.format("Идентификатор - %s", findedClaim.map(Claim::getId).get()));
+                System.out.println(String.format("Наименование - %s", findedClaim.map(Claim::getName).get()));
+                System.out.println(String.format("Описание - %s", findedClaim.map(Claim::getDescription).get()));
+                System.out.println(String.format("Дата создания - %s", findedClaim.map(Claim::getCreateDate).get()));
+                Comment[] comments = findedClaim.map(Claim::getComments).get();
                 for (int i = 0; i < comments.length - 1; i++) {
                     if (comments[i] != null) {
                         System.out.println(String.format("Комментарий №%s - %s", i + 1, comments[i].getText()));
@@ -136,10 +138,10 @@ public class Actions {
         @Override
         public void execute(IInput input, ITracker tracker) {
             String id = input.ask("Введите, пожалуйста, номер заявки: ");
-            Claim findedClaim = tracker.findById(id);
-            if (findedClaim != null) {
+            Optional<Claim> findedClaim = tracker.findById(id);
+            if (findedClaim.isPresent()) {
                 Claim claim = createClaim(input);
-                claim.setId(findedClaim.getId());
+                claim.setId(findedClaim.get().getId());
                 tracker.update(claim);
             } else {
                 System.out.println("Заявка не найдена");
@@ -155,6 +157,7 @@ public class Actions {
          * Наименования действия.
          */
         private static final String NAME_ACTION = "Показать все заявки";
+
         /**
          * Конструктор.
          *
@@ -186,6 +189,7 @@ public class Actions {
          * Наименования действия.
          */
         private static final String NAME_ACTION = "Удалить заявку";
+
         /**
          * Конструктор.
          *
@@ -203,13 +207,44 @@ public class Actions {
          */
         @Override
         public void execute(IInput input, ITracker tracker) {
-            String id = input.ask("Введите, пожалуйста, ном1ер заявки: ");
-            Claim findedClaim = tracker.findById(id);
-            if (findedClaim != null) {
-                tracker.delete(findedClaim);
+            String id = input.ask("Введите, пожалуйста, номер заявки: ");
+            Optional<Claim> findedClaim = tracker.findById(id);
+            if (findedClaim.isPresent()) {
+                tracker.delete(findedClaim.get());
             } else {
                 System.out.println("Заявка не найдена");
             }
         }
     }
+
+//    /**
+//     * Действие "Выйти".
+//     */
+//    public static class ExitClaimAction extends BaseAction {
+//
+//        /**
+//         * Наименования действия.
+//         */
+//        private static final String NAME_ACTION = "Выйти";
+//
+//        /**
+//         * Конструктор.
+//         *
+//         * @param key Ключ действия.
+//         */
+//        public ExitClaimAction(int key) {
+//            super(NAME_ACTION, key);
+//        }
+//
+//        /**
+//         * Выполнить действие.
+//         *
+//         * @param input   Объект для ввода/вывода.
+//         * @param tracker Объект для работы с заявками
+//         */
+//        @Override
+//        public void execute(IInput input, ITracker tracker) {
+//            tracker.s
+//        }
+//    }
 }

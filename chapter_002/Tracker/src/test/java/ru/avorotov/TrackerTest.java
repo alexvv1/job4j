@@ -37,7 +37,7 @@ public class TrackerTest {
     public void findByIdSuccessPath() {
         Tracker tracker = new Tracker();
         String newClaimId = tracker.add(new Claim("", "")).getId();
-        String findClaimId = tracker.findById(newClaimId).getId();
+        String findClaimId = tracker.findById(newClaimId).get().getId();
         //Assert
         Assert.assertEquals(true, newClaimId.equals(findClaimId));
     }
@@ -79,7 +79,7 @@ public class TrackerTest {
         //Act
         tracker.update(updateClaim);
         //Assert
-        Claim updatedClaim = tracker.findById(claimId);
+        Claim updatedClaim = tracker.findById(claimId).get();
         Assert.assertEquals(claimId, updatedClaim.getId());
         Assert.assertEquals(claimName, updatedClaim.getName());
         Assert.assertEquals(claimDesc, updatedClaim.getDescription());
@@ -90,17 +90,17 @@ public class TrackerTest {
      * Заявка удалена.
      */
     @Test
-    public void deleteSuccesPath() {
+    public void deleteofStartSuccesPath() {
         //Arrange
         Tracker tracker = new Tracker();
-        tracker.add(new Claim("name1", ""));
-        Claim claimDeleted = tracker.add(new Claim("name2", ""));
+        Claim claimDeleted = tracker.add(new Claim("name1", ""));
+        tracker.add(new Claim("name2", ""));
         tracker.add(new Claim("name3", ""));
         //Act
         String claimDeletedId = claimDeleted.getId();
         tracker.delete(claimDeleted);
         //Assert
-        int expectedCountClaims = 2;
+        final int expectedCountClaims = 2;
         Claim[] expectedClaims = tracker.findAll();
         Assert.assertEquals(expectedCountClaims, expectedClaims.length);
         boolean isFindDeleted = true;
@@ -112,6 +112,62 @@ public class TrackerTest {
         }
         Assert.assertEquals(true, isFindDeleted);
     }
+
+        /**
+         * Тестирование delete.
+         * Заявка удалена.
+         */
+        @Test
+        public void deleteofMiddleSuccesPath() {
+            //Arrange
+            Tracker tracker = new Tracker();
+            tracker.add(new Claim("name1", ""));
+            Claim claimDeleted = tracker.add(new Claim("name2", ""));
+            tracker.add(new Claim("name3", ""));
+            //Act
+            String claimDeletedId = claimDeleted.getId();
+            tracker.delete(claimDeleted);
+            //Assert
+            final int expectedCountClaims = 2;
+            Claim[] expectedClaims = tracker.findAll();
+            Assert.assertEquals(expectedCountClaims, expectedClaims.length);
+            boolean isFindDeleted = true;
+            for (Claim currentClaim : expectedClaims) {
+                if (claimDeletedId.equals(currentClaim.getId())) {
+                    isFindDeleted = false;
+                    break;
+                }
+            }
+            Assert.assertEquals(true, isFindDeleted);
+        }
+
+    /**
+             * Тестирование delete.
+             * Заявка удалена.
+             */
+            @Test
+            public void deleteofEndSuccesPath() {
+                //Arrange
+                Tracker tracker = new Tracker();
+                tracker.add(new Claim("name1", ""));
+                tracker.add(new Claim("name2", ""));
+                Claim claimDeleted = tracker.add(new Claim("name3", ""));
+                //Act
+                String claimDeletedId = claimDeleted.getId();
+                tracker.delete(claimDeleted);
+                //Assert
+                final int expectedCountClaims = 2;
+                Claim[] expectedClaims = tracker.findAll();
+                Assert.assertEquals(expectedCountClaims, expectedClaims.length);
+                boolean isFindDeleted = true;
+                for (Claim currentClaim : expectedClaims) {
+                    if (claimDeletedId.equals(currentClaim.getId())) {
+                        isFindDeleted = false;
+                        break;
+                    }
+                }
+                Assert.assertEquals(true, isFindDeleted);
+            }
 
     /**
          * Тестирование findByName.

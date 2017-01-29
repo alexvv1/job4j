@@ -18,6 +18,7 @@ public class ConsoleInput implements IInput {
 
     /**
      * Спросить.
+     *
      * @param question Вопрос
      * @return Ответ на вопрос.
      */
@@ -25,6 +26,39 @@ public class ConsoleInput implements IInput {
     public String ask(String question) {
         System.out.print(question);
         return scanner.nextLine();
+    }
+
+    /**
+     * Спросить.
+     *
+     * @param question Вопрос
+     * @param range
+     * @return Ответ на вопрос.
+     */
+    @Override
+    public int ask(String question, int[] range) {
+        boolean valid = false;
+        int key = -1;
+
+        do {
+            try {
+                key = Integer.valueOf(this.ask(question));
+                for (int value : range) {
+                    if (value == key) {
+                        valid = true;
+                        break;
+                    }
+                }
+                if (!valid) {
+                    throw new MenuOutException("Out of menu range.");
+                }
+            } catch (MenuOutException ex) {
+                System.out.println("Введите, пожалуйста, корректный пункт меню. ");
+            } catch (NumberFormatException e) {
+                System.out.println("Введите, пожалуйста, корректный пункт меню. ");
+            }
+        } while (!valid);
+        return key;
     }
 
     /**
