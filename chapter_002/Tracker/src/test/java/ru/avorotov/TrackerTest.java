@@ -35,8 +35,10 @@ public class TrackerTest {
      */
     @Test
     public void findByIdSuccessPath() {
+        //Arrange
         Tracker tracker = new Tracker();
         String newClaimId = tracker.add(new Claim("", "")).getId();
+        //Act
         String findClaimId = tracker.findById(newClaimId).get().getId();
         //Assert
         Assert.assertEquals(true, newClaimId.equals(findClaimId));
@@ -113,66 +115,66 @@ public class TrackerTest {
         Assert.assertEquals(true, isFindDeleted);
     }
 
-        /**
-         * Тестирование delete.
-         * Заявка удалена.
-         */
-        @Test
-        public void deleteofMiddleSuccesPath() {
-            //Arrange
-            Tracker tracker = new Tracker();
-            tracker.add(new Claim("name1", ""));
-            Claim claimDeleted = tracker.add(new Claim("name2", ""));
-            tracker.add(new Claim("name3", ""));
-            //Act
-            String claimDeletedId = claimDeleted.getId();
-            tracker.delete(claimDeleted);
-            //Assert
-            final int expectedCountClaims = 2;
-            Claim[] expectedClaims = tracker.findAll();
-            Assert.assertEquals(expectedCountClaims, expectedClaims.length);
-            boolean isFindDeleted = true;
-            for (Claim currentClaim : expectedClaims) {
-                if (claimDeletedId.equals(currentClaim.getId())) {
-                    isFindDeleted = false;
-                    break;
-                }
+    /**
+     * Тестирование delete.
+     * Заявка удалена.
+     */
+    @Test
+    public void deleteofMiddleSuccesPath() {
+        //Arrange
+        Tracker tracker = new Tracker();
+        tracker.add(new Claim("name1", ""));
+        Claim claimDeleted = tracker.add(new Claim("name2", ""));
+        tracker.add(new Claim("name3", ""));
+        //Act
+        String claimDeletedId = claimDeleted.getId();
+        tracker.delete(claimDeleted);
+        //Assert
+        final int expectedCountClaims = 2;
+        Claim[] expectedClaims = tracker.findAll();
+        Assert.assertEquals(expectedCountClaims, expectedClaims.length);
+        boolean isFindDeleted = true;
+        for (Claim currentClaim : expectedClaims) {
+            if (claimDeletedId.equals(currentClaim.getId())) {
+                isFindDeleted = false;
+                break;
             }
-            Assert.assertEquals(true, isFindDeleted);
         }
+        Assert.assertEquals(true, isFindDeleted);
+    }
 
     /**
-             * Тестирование delete.
-             * Заявка удалена.
-             */
-            @Test
-            public void deleteofEndSuccesPath() {
-                //Arrange
-                Tracker tracker = new Tracker();
-                tracker.add(new Claim("name1", ""));
-                tracker.add(new Claim("name2", ""));
-                Claim claimDeleted = tracker.add(new Claim("name3", ""));
-                //Act
-                String claimDeletedId = claimDeleted.getId();
-                tracker.delete(claimDeleted);
-                //Assert
-                final int expectedCountClaims = 2;
-                Claim[] expectedClaims = tracker.findAll();
-                Assert.assertEquals(expectedCountClaims, expectedClaims.length);
-                boolean isFindDeleted = true;
-                for (Claim currentClaim : expectedClaims) {
-                    if (claimDeletedId.equals(currentClaim.getId())) {
-                        isFindDeleted = false;
-                        break;
-                    }
-                }
-                Assert.assertEquals(true, isFindDeleted);
+     * Тестирование delete.
+     * Заявка удалена.
+     */
+    @Test
+    public void deleteofEndSuccesPath() {
+        //Arrange
+        Tracker tracker = new Tracker();
+        tracker.add(new Claim("name1", ""));
+        tracker.add(new Claim("name2", ""));
+        Claim claimDeleted = tracker.add(new Claim("name3", ""));
+        //Act
+        String claimDeletedId = claimDeleted.getId();
+        tracker.delete(claimDeleted);
+        //Assert
+        final int expectedCountClaims = 2;
+        Claim[] expectedClaims = tracker.findAll();
+        Assert.assertEquals(expectedCountClaims, expectedClaims.length);
+        boolean isFindDeleted = true;
+        for (Claim currentClaim : expectedClaims) {
+            if (claimDeletedId.equals(currentClaim.getId())) {
+                isFindDeleted = false;
+                break;
             }
+        }
+        Assert.assertEquals(true, isFindDeleted);
+    }
 
     /**
-         * Тестирование findByName.
-         * Поиск заявки по имени.
-         */
+     * Тестирование findByName.
+     * Поиск заявки по имени.
+     */
     @Test
     public void findByNameSuccessPath() {
         //Arrange
