@@ -33,6 +33,7 @@
 						<phase>validate</phase>
 						<configuration>
 							<configLocation>checkStyle.xml</configLocation>
+							<suppressionsLocation>checkStyle.xml</suppressionsLocation>
 							<encoding>UTF-8</encoding>
 							<consoleOutput>true</consoleOutput>
 							<failsOnError>true</failsOnError>
@@ -80,6 +81,7 @@
 	<modules>
 		<module>chapter_001</module>
 		<module>chapter_002/Tracker</module>
+		<module>chapter_002/Strategy</module>
 	</modules>
 	
 	<dependencies>
