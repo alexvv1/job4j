@@ -3,7 +3,7 @@
 	<groupId>ru.avorotov</groupId>
 	<artifactId>junior</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>junior</name>
 	<url>https://github.com/alexvv1/alexvv.git</url>
 	
@@ -32,8 +32,8 @@
 						<id>validate</id>
 						<phase>validate</phase>
 						<configuration>
-							<configLocation>checkStyle.xml</configLocation>
-							<suppressionsLocation>checkStyle.xml</suppressionsLocation>
+							<configLocation>checkstyle.xml</configLocation>
+							<suppressionsLocation>checkstyle.xml</suppressionsLocation>
 							<encoding>UTF-8</encoding>
 							<consoleOutput>true</consoleOutput>
 							<failsOnError>true</failsOnError>
@@ -82,6 +82,7 @@
 		<module>chapter_001</module>
 		<module>chapter_002/Tracker</module>
 		<module>chapter_002/Strategy</module>
+		<module>chapter_002/Chess</module>
 	</modules>
 	
 	<dependencies>
