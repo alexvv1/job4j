@@ -12,5 +12,6 @@
 
 	<modules>
 		<module>1_PerfomanceCollectionTest</module>
+		<module>2_ConvertList</module>
 	</modules>
 </project>
