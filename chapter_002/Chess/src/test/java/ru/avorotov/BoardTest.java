@@ -13,19 +13,27 @@ import ru.avorotov.pieces.Pawn;
  * Тест Шахмотная доска.
  */
 public class BoardTest {
-    private final static Cell sourcePositionFigure = new Cell(1,3);
-    private final static Cell distPositionFigure = new Cell(3,5);
+    /**
+     * Начальная позиция фигуры.
+     */
+    private final Cell sourcePositionFigure = new Cell(1, 3);
+    /**
+     * Конечная позиция фигуры.
+     */
+    private final Cell distPositionFigure = new Cell(3, 5);
 
-
+    /**
+     * Rule expectedException.
+     */
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
 
     /**
      * Ход фигуры. SuccessPath.
-     * @throws Exception
+     * @throws Exception exc.
      */
     @Test
-    public void move_whenWayCleanThenSuccessPath() throws Exception {
+    public void moveWhenWayCleanThenSuccessPath() throws Exception {
         //Arrange
         Board board = new Board();
         board.addFigure(new Bishop(sourcePositionFigure));
@@ -39,25 +47,27 @@ public class BoardTest {
 
     /**
      * Ход фигуры. Фигура на заданной ячейке не найденв.
-     * @throws Exception
+     * @throws Exception exc.
      */
     @Test()
-    public void move_whenFigureNotFound() throws Exception {
+    public void moveWhenFigureNotFound() throws Exception {
         //Arrange
         Board board = new Board();
         board.addFigure(new Bishop(sourcePositionFigure));
         //Act
         //Assert
         expectedException.expect(Is.isA(FigureNotFoundException.class));
-        board.move(new Cell(8,8), distPositionFigure);
+        final int xCoordinate = 8;
+        final int yCoordinate = 8;
+        board.move(new Cell(xCoordinate, yCoordinate), distPositionFigure);
     }
 
     /**
      * Ход фигуры. Неверный путь.
-     * @throws Exception
+     * @throws Exception exc.
      */
     @Test()
-    public void move_impossibleMoveException() throws Exception {
+    public void moveImpossibleMoveException() throws Exception {
         //Arrange
         Board board = new Board();
         board.addFigure(new Bishop(sourcePositionFigure));
@@ -65,19 +75,23 @@ public class BoardTest {
         //Assert
         expectedException.expect(Is.isA(ImpossibleMoveException.class));
         expectedException.expectMessage(Is.is("Неверный путь."));
-        board.move(sourcePositionFigure, new Cell(1,7));
+        final int xCoordinate = 1;
+        final int yCoordinate = 7;
+        board.move(sourcePositionFigure, new Cell(xCoordinate, yCoordinate));
     }
 
     /**
      * Ход фигуры. На пути фигуры есть другие фигуры.
-     * @throws Exception
+     * @throws Exception exc.
      */
     @Test()
-    public void move_OccupiedWayException() throws Exception {
+    public void moveOccupiedWayException() throws Exception {
         //Arrange
         Board board = new Board();
         board.addFigure(new Bishop(sourcePositionFigure));
-        board.addFigure(new Pawn(new Cell(2,4)));
+        final int xCoordinate = 2;
+        final int yCoordinate = 4;
+        board.addFigure(new Pawn(new Cell(xCoordinate, yCoordinate)));
         //Act
         //Assert
         expectedException.expect(Is.isA(OccupiedWayException.class));
