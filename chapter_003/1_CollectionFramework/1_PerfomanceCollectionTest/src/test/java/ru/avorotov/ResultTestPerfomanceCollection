@@ -1,0 +1,14 @@
+ArrayList
+
+Add 3000000 elements. Time is 4544 ms.
+Delete 2500000 elements. Time is 3838900 ms.
+
+LinkedList
+
+Add 3000000 elements. Time is 6913 ms.
+Delete 2500000 elements. Time is 113 ms.
+
+TreeSet
+
+Add 3000000 elements. Time is 6205 ms.
+Delete 2500000 elements. Time is 156 ms.
