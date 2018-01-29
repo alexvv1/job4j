@@ -10,6 +10,7 @@ import java.util.List;
 public class ConvertList {
     /**
      * Конвертация двумерного массива в ArrayList.
+     *
      * @param array Массив.
      * @return Результирующий ArrayList.
      */
@@ -25,6 +26,7 @@ public class ConvertList {
 
     /**
      * Конвертация ArrayList в двумерный массив.
+     *
      * @param list Исходный ArrayList.
      * @param rows Количество строк в результирующем массиве.
      * @return Результирующий массив.
@@ -50,4 +52,21 @@ public class ConvertList {
         }
         return array;
     }
+
+    /**
+     * Конвертация списка массивов int в плоский список int.
+     *
+     * @param list спимок массивов int.
+     * @return список int.
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> resList = new ArrayList<>();
+        for (int[] listArrays : list) {
+            for (int item : listArrays) {
+                resList.add(item);
+            }
+        }
+        return resList;
+    }
+
 }
