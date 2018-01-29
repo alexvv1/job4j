@@ -1,7 +1,7 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
     <groupId>ru.avorotov.junior.chapter_003.1_CollectionFramework</groupId>
-	<artifactId>2_ConvertUser</artifactId>
+	<artifactId>3_ConvertUser</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<parent>
