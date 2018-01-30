@@ -13,5 +13,8 @@
 	<modules>
 		<module>1_PerfomanceCollectionTest</module>
 		<module>2_ConvertList</module>
+		<module>3_ConvertUser</module>
+		<!--<module>4_NewTracker</module>-->
+		<module>5_Sorting</module>
 	</modules>
 </project>

@@ -2,6 +2,7 @@ package ru.avorotov;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,5 +43,26 @@ public class ConvertListTest {
         //Assert
         final int[][] expectedArray = {{7, 4, 1, 8}, {5, 2, 9, 6}, {3, 7, 4, 0}, {4, 3, 0, 0}};
         assertThat(expectedArray, is(testArray));
+    }
+
+    /**
+     * Тестирование Конвертация списка массивов int в плоский список int.
+     */
+    @Test
+    public void convertListArraysToListTest() {
+        //Arrange
+        List<int[]> list = new ArrayList<>();
+        final int[] arrayInt1 = {6, 9, 4, 8, 2};
+        list.add(arrayInt1);
+        final int[] arrayInt2 = {3, 4, 5, 6};
+        list.add(arrayInt2);
+        final int[] arrayInt3 = {6, 222, 454, 5678};
+        list.add(arrayInt3);
+        //Act
+        ConvertList convertList = new ConvertList();
+        List<Integer> result = convertList.convert(list);
+        //Assert
+        final Integer[] resultList = {6, 9, 4, 8, 2, 3, 4, 5, 6, 6, 222, 454, 5678};
+        assertThat(Arrays.asList(resultList), is(result));
     }
 }

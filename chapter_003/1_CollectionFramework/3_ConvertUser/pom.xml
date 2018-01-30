@@ -1,0 +1,16 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>ru.avorotov.junior.chapter_003.1_CollectionFramework</groupId>
+	<artifactId>3_ConvertUser</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>ru.avorotov.junior.chapter_003</groupId>
+		<artifactId>1_CollectionFramework</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<modules>
+
+	</modules>
+</project>
