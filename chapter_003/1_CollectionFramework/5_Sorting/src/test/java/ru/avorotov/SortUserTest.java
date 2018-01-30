@@ -7,18 +7,27 @@ import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.Matchers.contains;
 
+/**
+ * Тест сортировки пользователей.
+ */
 public class SortUserTest {
 
+    /**
+     * Тестирование пользователя по возрасту в порядке возрастания.
+     */
     @Test
-    public void sort() {
+    public void sortUserTest() {
         //Arrange
-        User user1 = new User("Name1", 14);
-        User user2 = new User("Name2", 10);
-        User user3 = new User("Name3", 16);
-        User user4 = new User("Name4", 12);
+        final int ageUser1 = 14;
+        User user1 = new User("Name1", ageUser1);
+        final int ageUser2 = 10;
+        User user2 = new User("Name2", ageUser2);
+        final int ageUser3 = 16;
+        User user3 = new User("Name3", ageUser3);
+        final int ageUser4 = 12;
+        User user4 = new User("Name4", ageUser4);
         List<User> unsortedList = new ArrayList<>();
         unsortedList.add(user1);
         unsortedList.add(user2);
@@ -27,7 +36,6 @@ public class SortUserTest {
         //Act
         Set<User> sortedUsers = new SortUser().sort(unsortedList);
         //Assert
-        //assertThat(sortedUsers, hasItems(hasItem(user1), hasItem(user4), hasItem(user1), hasItem(user3)));
         assertThat(sortedUsers, contains(user2, user4, user1, user3));
 
     }

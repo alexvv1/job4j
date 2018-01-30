@@ -7,49 +7,89 @@ import java.util.Objects;
  */
 public class User implements Comparable<User> {
 
+    /**
+     * Конструктор.
+     * @param name Имя пользователя.
+     * @param age Возраст пользователя.
+     */
+    @SuppressWarnings("WeakerAccess")
     public User(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
 
+    /**
+     * Имя пользователя.
+     * @return Имя пользователя.
+     */
+    @SuppressWarnings("unused")
     public String getName() {
-
         return name;
     }
 
+    /**
+     * Возраст пользователя.
+     * @return Возраст пользователя.
+     */
+    @SuppressWarnings("unused")
     public Integer getAge() {
         return age;
     }
 
+    /**
+     * Имя пользователя.
+     */
     private String name;
-
+    /**
+     * Возраст пользователя.
+     */
     private Integer age;
 
+    /**
+     * Сравнение текущего пользователя с переданным в параметрах.
+     * @param user Сравниваемый пользователь.
+     * @return -1 = this > user; +1 = user < this.
+     */
     @Override
     public int compareTo(User user) {
-        final int compareAge = this.age.compareTo(user.age);
-        return compareAge;
+        return this.age.compareTo(user.age);
     }
 
+    /**
+     * Сравнение текущего User и переданного по имени и возрасту.
+     * @param o User
+     * @return true - если объекты равны.
+     */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return Objects.equals(name, user.name) &&
-                Objects.equals(age, user.age);
+        return Objects.equals(name, user.name)
+                && Objects.equals(age, user.age);
     }
 
+    /**
+     * HashCode.
+     * @return HashCode.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, age);
     }
 
+    /**
+     * To String.
+     * @return To String.
+     */
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "User{"
+                + "name='" + name + '\''
+                + ", age=" + age + '}';
     }
 }

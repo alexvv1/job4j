@@ -8,9 +8,13 @@ import java.util.TreeSet;
  * Сортровка пользователей.
  */
 public class SortUser {
+    /**
+     * Отсортироть пользователей по возрасту в порядке возрастания.
+     * @param users Пользователи.
+     * @return Set отсортированных пользователей.
+     */
     public Set<User> sort(List<User> users) {
-        TreeSet<User> sortUsers = new TreeSet<>(users);
-        return sortUsers;
+        return new TreeSet<>(users);
     }
 
 }
