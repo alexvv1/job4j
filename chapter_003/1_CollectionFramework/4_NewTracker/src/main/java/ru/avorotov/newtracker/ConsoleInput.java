@@ -1,5 +1,6 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -32,11 +33,11 @@ public class ConsoleInput implements IInput {
      * Спросить.
      *
      * @param question Вопрос
-     * @param range
+     * @param range Ключи допустимых действий.
      * @return Ответ на вопрос.
      */
     @Override
-    public int ask(String question, int[] range) {
+    public int ask(String question, List<Integer> range) {
         boolean valid = false;
         int key = -1;
 
@@ -52,9 +53,7 @@ public class ConsoleInput implements IInput {
                 if (!valid) {
                     throw new MenuOutException("Out of menu range.");
                 }
-            } catch (MenuOutException ex) {
-                System.out.println("Введите, пожалуйста, корректный пункт меню. ");
-            } catch (NumberFormatException e) {
+            } catch (MenuOutException | NumberFormatException ex) {
                 System.out.println("Введите, пожалуйста, корректный пункт меню. ");
             }
         } while (!valid);

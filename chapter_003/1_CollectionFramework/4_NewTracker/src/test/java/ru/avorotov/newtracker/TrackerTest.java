@@ -1,8 +1,10 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.avorotov.Model.Claim;
+import ru.avorotov.newtracker.Model.Claim;
+
+import java.util.List;
 
 /**
  * Тестирование работы с Заявками.
@@ -25,8 +27,8 @@ public class TrackerTest {
         tracker.add(claim3);
         //Assert
         final int expectedSizeClaims = 3;
-        Claim[] actualClaims = tracker.findAll();
-        Assert.assertEquals(actualClaims.length, expectedSizeClaims);
+        List<Claim> actualClaims = tracker.findAll();
+        Assert.assertEquals(actualClaims.size(), expectedSizeClaims);
     }
 
     /**
@@ -56,13 +58,13 @@ public class TrackerTest {
         String claim2Id = tracker.add(new Claim("", "")).getId();
         String claim3Id = tracker.add(new Claim("", "")).getId();
         //Act
-        Claim[] actualClaims = tracker.findAll();
+        List<Claim> actualClaims = tracker.findAll();
         //Assert
         final int expectedCountClaims = 3;
-        Assert.assertEquals(expectedCountClaims, actualClaims.length);
-        Assert.assertEquals(claim1Id, actualClaims[0].getId());
-        Assert.assertEquals(claim2Id, actualClaims[1].getId());
-        Assert.assertEquals(claim3Id, actualClaims[2].getId());
+        Assert.assertEquals(expectedCountClaims, actualClaims.size());
+        Assert.assertEquals(claim1Id, actualClaims.get(0).getId());
+        Assert.assertEquals(claim2Id, actualClaims.get(1).getId());
+        Assert.assertEquals(claim3Id, actualClaims.get(2).getId());
     }
 
     /**
@@ -103,8 +105,8 @@ public class TrackerTest {
         tracker.delete(claimDeleted);
         //Assert
         final int expectedCountClaims = 2;
-        Claim[] expectedClaims = tracker.findAll();
-        Assert.assertEquals(expectedCountClaims, expectedClaims.length);
+        List<Claim> expectedClaims = tracker.findAll();
+        Assert.assertEquals(expectedCountClaims, expectedClaims.size());
         boolean isFindDeleted = true;
         for (Claim currentClaim : expectedClaims) {
             if (claimDeletedId.equals(currentClaim.getId())) {
@@ -131,8 +133,8 @@ public class TrackerTest {
         tracker.delete(claimDeleted);
         //Assert
         final int expectedCountClaims = 2;
-        Claim[] expectedClaims = tracker.findAll();
-        Assert.assertEquals(expectedCountClaims, expectedClaims.length);
+        List<Claim> expectedClaims = tracker.findAll();
+        Assert.assertEquals(expectedCountClaims, expectedClaims.size());
         boolean isFindDeleted = true;
         for (Claim currentClaim : expectedClaims) {
             if (claimDeletedId.equals(currentClaim.getId())) {
@@ -159,8 +161,8 @@ public class TrackerTest {
         tracker.delete(claimDeleted);
         //Assert
         final int expectedCountClaims = 2;
-        Claim[] expectedClaims = tracker.findAll();
-        Assert.assertEquals(expectedCountClaims, expectedClaims.length);
+        List<Claim> expectedClaims = tracker.findAll();
+        Assert.assertEquals(expectedCountClaims, expectedClaims.size());
         boolean isFindDeleted = true;
         for (Claim currentClaim : expectedClaims) {
             if (claimDeletedId.equals(currentClaim.getId())) {
@@ -187,11 +189,11 @@ public class TrackerTest {
         tracker.add(new Claim(claimName2, ""));
         tracker.add(new Claim(claimName3, ""));
         //Act
-        Claim[] findClaims = tracker.findByName(claimName2);
+        List<Claim> findClaims = tracker.findByName(claimName2);
         //Assert
         int expectedCount = 2;
-        Assert.assertEquals(expectedCount, findClaims.length);
-        Assert.assertEquals(findClaims[0].getName(), claimName2);
-        Assert.assertEquals(findClaims[1].getName(), claimName2);
+        Assert.assertEquals(expectedCount, findClaims.size());
+        Assert.assertEquals(findClaims.get(0).getName(), claimName2);
+        Assert.assertEquals(findClaims.get(1).getName(), claimName2);
     }
 }

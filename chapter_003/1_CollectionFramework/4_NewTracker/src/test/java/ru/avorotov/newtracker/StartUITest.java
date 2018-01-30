@@ -1,9 +1,11 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.avorotov.Model.Claim;
-import ru.avorotov.Model.Comment;
+import ru.avorotov.newtracker.Model.Claim;
+import ru.avorotov.newtracker.Model.Comment;
+
+import java.util.Collections;
 
 /**
  * Тест Tracker.
@@ -25,7 +27,7 @@ public class StartUITest {
         startUI.start();
         //Assert
         int expectedCountClaim = 2;
-        Assert.assertEquals(expectedCountClaim, tracker.findAll().length);
+        Assert.assertEquals(expectedCountClaim, tracker.findAll().size());
     }
 
     /**
@@ -40,14 +42,14 @@ public class StartUITest {
         ITracker tracker = new Tracker();
         Claim expectedClaim = new Claim("name2", "desc2");
         expectedClaim.setId("1");
-        expectedClaim.setComments(new Comment[]{new Comment("comm1")});
+        expectedClaim.setComments(Collections.singletonList(new Comment("comm1")));
         //Act
         StartUI startUI = new StartUI(stubInput, tracker);
         startUI.start();
         //Assert
         int expectedCountClaim = 1;
-        Assert.assertEquals(expectedCountClaim, tracker.findAll().length);
-        Claim actualClaim = tracker.findAll()[0];
+        Assert.assertEquals(expectedCountClaim, tracker.findAll().size());
+        Claim actualClaim = tracker.findAll().get(0);
         //Assert
         Assert.assertEquals(expectedClaim.getId(), actualClaim.getId());
         Assert.assertEquals(expectedClaim.getName(), actualClaim.getName());
@@ -74,6 +76,6 @@ public class StartUITest {
         startUI.start();
         //Assert
         int expectedCountClaim = 1;
-        Assert.assertEquals(expectedCountClaim, tracker.findAll().length);
+        Assert.assertEquals(expectedCountClaim, tracker.findAll().size());
     }
 }

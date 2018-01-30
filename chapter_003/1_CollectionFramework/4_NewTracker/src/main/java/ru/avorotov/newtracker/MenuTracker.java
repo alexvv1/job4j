@@ -1,4 +1,7 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Меню.
@@ -13,26 +16,19 @@ public class MenuTracker {
      * Tracker.
      */
     private final ITracker tracker;
-    /**
-     * Количество действий.
-     */
-    private final int countUserAction = 6;
 
     /**
      * Пользовательские действия.
      */
-    private final IUserAction[] actions = new IUserAction[countUserAction];
-    /**
-     * Позиция пользовательского действия.
-     */
-    private int position = 1;
+    private final List<IUserAction> actions = new ArrayList<>();
 
     /**
      * Контроль.
-     * @param input Ввод/вывод.
+     *
+     * @param input   Ввод/вывод.
      * @param tracker Tracker.
      */
-    public MenuTracker(IInput input, ITracker tracker) {
+    MenuTracker(IInput input, ITracker tracker) {
         this.input = input;
         this.tracker = tracker;
 
@@ -41,38 +37,42 @@ public class MenuTracker {
 
     /**
      * Выбрать пользовательское действие.
+     *
      * @param key Ключ действия.
      */
     public void select(int key) {
-        this.actions[key].execute(this.input, this.tracker);
+        this.actions.stream().filter(k-> k.key() == key).findFirst().get().execute(this.input, this.tracker);
     }
 
     /**
      * Заполнить действия.
      */
     private void fillAction() {
-        this.actions[position] = new Actions.AddAction(position);
+        int position = 1;
+        this.actions.add(new Actions.AddAction(position));
         position++;
-        this.actions[position] = new Actions.ShowClaimAction(position);
+        this.actions.add(new Actions.ShowClaimAction(position));
         position++;
-        this.actions[position] = new Actions.EditClaimAction(position);
+        this.actions.add(new Actions.EditClaimAction(position));
         position++;
-        this.actions[position] = new Actions.ShowAllClaimAction(position);
+        this.actions.add(new Actions.ShowAllClaimAction(position));
         position++;
-        this.actions[position] = new Actions.DeleteClaimAction(position);
+        this.actions.add(new Actions.DeleteClaimAction(position));
     }
 
     /**
      * Возвращает ключи доступных действий.
+     *
      * @return Ключи доступных действий
      */
-    public int[] getExistKeysAction() {
-        int[] existKeysAction = new int[actions.length - 1];
-        for (int i = 1; i < actions.length; i++) {
-            existKeysAction[i - 1] = actions[i].key();
+    public List<Integer> getExistKeysAction() {
+        List<Integer> existKeysAction = new ArrayList<>();
+        for (IUserAction action : actions) {
+            existKeysAction.add(action.key());
         }
-            return existKeysAction;
+        return existKeysAction;
     }
+
     /**
      * Показать меню.
      */

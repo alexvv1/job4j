@@ -1,4 +1,4 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
 
 /**
  * Start UI.
@@ -20,7 +20,7 @@ public class StartUI {
      * @param input Ввод/вывод.
      * @param tracker Tracker.
      */
-    public StartUI(IInput input, ITracker tracker) {
+    StartUI(IInput input, ITracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }

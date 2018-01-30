@@ -1,4 +1,4 @@
-package ru.avorotov.Model;
+package ru.avorotov.newtracker.Model;
 
 /**
  * Класс Комментарий.

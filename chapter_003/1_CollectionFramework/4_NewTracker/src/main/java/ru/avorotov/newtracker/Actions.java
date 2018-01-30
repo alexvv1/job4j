@@ -1,14 +1,16 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
 
-import ru.avorotov.Model.Claim;
-import ru.avorotov.Model.Comment;
+import ru.avorotov.newtracker.Model.Claim;
+import ru.avorotov.newtracker.Model.Comment;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
  * Действия.
  */
-public class Actions {
+class Actions {
     /**
      * Создать заявку.
      *
@@ -19,15 +21,13 @@ public class Actions {
         String name = input.ask("Введите, пожалуйста, имя заявки: ");
         String desc = input.ask("Введите, пожалуйста, описание заявки: ");
         Claim claim = new Claim(name, desc);
-        final int countComments = 5;
-        Comment[] comments = new Comment[countComments];
+        ArrayList<Comment> comments = new ArrayList<>();
         boolean needAddComments = true;
-        int positionComment = 0;
         while (needAddComments) {
             needAddComments = input.askBoolean("Добавить комментарии(да)? ");
-            if (needAddComments && positionComment < comments.length - 1) {
+            if (needAddComments) {
                 String commentText = input.ask("Введите, пожалуйста, текст комментария: ");
-                comments[positionComment++] = new Comment(commentText);
+                comments.add(new Comment(commentText));
             }
         }
         claim.setComments(comments);
@@ -48,7 +48,7 @@ public class Actions {
          *
          * @param key Ключ действия.
          */
-        public AddAction(int key) {
+        AddAction(int key) {
             super(NAME_ACTION, key);
         }
 
@@ -80,7 +80,7 @@ public class Actions {
          *
          * @param key Ключ действия.
          */
-        public ShowClaimAction(int key) {
+        ShowClaimAction(int key) {
             super(NAME_ACTION, key);
         }
 
@@ -99,10 +99,10 @@ public class Actions {
                 System.out.println(String.format("Наименование - %s", findedClaim.map(Claim::getName).get()));
                 System.out.println(String.format("Описание - %s", findedClaim.map(Claim::getDescription).get()));
                 System.out.println(String.format("Дата создания - %s", findedClaim.map(Claim::getCreateDate).get()));
-                Comment[] comments = findedClaim.map(Claim::getComments).get();
-                for (int i = 0; i < comments.length - 1; i++) {
-                    if (comments[i] != null) {
-                        System.out.println(String.format("Комментарий №%s - %s", i + 1, comments[i].getText()));
+                List<Comment> comments = findedClaim.map(Claim::getComments).get();
+                for (int i = 0; i < comments.size() - 1; i++) {
+                    if (comments.get(i) != null) {
+                        System.out.println(String.format("Комментарий №%s - %s", i + 1, comments.get(i).getText()));
                     }
                 }
             } else {
@@ -125,7 +125,7 @@ public class Actions {
          *
          * @param key Ключ действия.
          */
-        public EditClaimAction(int key) {
+        EditClaimAction(int key) {
             super(NAME_ACTION, key);
         }
 
@@ -163,7 +163,7 @@ public class Actions {
          *
          * @param key Ключ действия.
          */
-        public ShowAllClaimAction(int key) {
+        ShowAllClaimAction(int key) {
             super(NAME_ACTION, key);
         }
 
@@ -195,7 +195,7 @@ public class Actions {
          *
          * @param key Ключ действия.
          */
-        public DeleteClaimAction(int key) {
+        DeleteClaimAction(int key) {
             super(NAME_ACTION, key);
         }
 
@@ -216,35 +216,4 @@ public class Actions {
             }
         }
     }
-
-//    /**
-//     * Действие "Выйти".
-//     */
-//    public static class ExitClaimAction extends BaseAction {
-//
-//        /**
-//         * Наименования действия.
-//         */
-//        private static final String NAME_ACTION = "Выйти";
-//
-//        /**
-//         * Конструктор.
-//         *
-//         * @param key Ключ действия.
-//         */
-//        public ExitClaimAction(int key) {
-//            super(NAME_ACTION, key);
-//        }
-//
-//        /**
-//         * Выполнить действие.
-//         *
-//         * @param input   Объект для ввода/вывода.
-//         * @param tracker Объект для работы с заявками
-//         */
-//        @Override
-//        public void execute(IInput input, ITracker tracker) {
-//            tracker.s
-//        }
-//    }
 }

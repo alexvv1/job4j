@@ -3,4 +3,4 @@
  * @author avorotov
  * @version $id$
  */
-package ru.avorotov.Model;
+package ru.avorotov.newtracker.Model;

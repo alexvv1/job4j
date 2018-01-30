@@ -1,6 +1,8 @@
-package ru.avorotov.Model;
+package ru.avorotov.newtracker.Model;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Класс заявка.
@@ -18,7 +20,6 @@ public class Claim {
     }
 
     /**
-
      * Идентификатор.
      */
     private String id;
@@ -37,7 +38,7 @@ public class Claim {
     /**
      * Список комментариев.
      */
-    private Comment[] comments;
+    private List<Comment> comments;
 
     /**
      * Возвращает Дата создания.
@@ -58,15 +59,6 @@ public class Claim {
     }
 
     /**
-     * Установить описание.
-     *
-     * @param description описание.
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
      * Возвращает Имя.
      *
      * @return Имя.
@@ -76,20 +68,11 @@ public class Claim {
     }
 
     /**
-     * Установить Имя.
-     *
-     * @param name Имя.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Возвращает список Комментариев.
      *
      * @return список Комментариев.
      */
-    public Comment[] getComments() {
+    public List<Comment> getComments() {
         return this.comments;
     }
 
@@ -98,7 +81,7 @@ public class Claim {
      *
      * @param comments Комментарии.
      */
-    public void setComments(Comment[] comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 
@@ -118,5 +101,22 @@ public class Claim {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Claim claim = (Claim) o;
+        return Objects.equals(id, claim.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

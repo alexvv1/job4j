@@ -1,7 +1,8 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
 
-import ru.avorotov.Model.Claim;
+import ru.avorotov.newtracker.Model.Claim;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -36,7 +37,7 @@ public interface ITracker {
      *
      * @return Все заявки.
      */
-    Claim[] findAll();
+    List<Claim> findAll();
 
     /**
      * Найти заявку по имени.
@@ -44,7 +45,7 @@ public interface ITracker {
      * @param name Наименование заявки.
      * @return Заявка.
      */
-    Claim[] findByName(String name);
+    List<Claim> findByName(String name);
 
     /**
      * Найти заявку по Id.

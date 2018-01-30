@@ -1,4 +1,4 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
 
 /**
  * Базовый класс для действия.
@@ -20,7 +20,7 @@ public abstract class BaseAction implements IUserAction {
      * @param name Наименование операции.
      * @param key Идентификатор действия.
      */
-    public BaseAction(String name, int key) {
+    BaseAction(String name, int key) {
         this.name = name;
         this.key = key;
     }

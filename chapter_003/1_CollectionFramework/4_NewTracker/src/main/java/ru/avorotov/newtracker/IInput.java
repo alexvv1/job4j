@@ -1,4 +1,6 @@
-package ru.avorotov;
+package ru.avorotov.newtracker;
+
+import java.util.List;
 
 /**
  * Ввод данных.
@@ -13,11 +15,11 @@ public interface IInput {
 
     /**
      * Спросить.
-     * @param question Вопрос
+     * @param question Вопрос.
      * @param range Ключи допустимых действий.
      * @return Ответ на вопрос.
      */
-    int ask(String question, int[] range);
+    int ask(String question, List<Integer> range);
 
 
     /**
