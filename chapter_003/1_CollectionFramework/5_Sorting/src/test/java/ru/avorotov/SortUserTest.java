@@ -39,4 +39,91 @@ public class SortUserTest {
         assertThat(sortedUsers, contains(user2, user4, user1, user3));
 
     }
+
+    /**
+     * Пользователь №1.
+     */
+    private final User user1 = new User("Сергей", 25);
+
+    /**
+     * Пользователь №2.
+     */
+    private final User user2 = new User("Иван", 30);
+
+    /**
+     * Пользователь №3.
+     */
+    private final User user3 = new User("Сергей", 20);
+
+    /**
+     * Пользователь №4.
+     */
+    private final User user4 = new User("Иван", 25);
+
+    /**
+     * Тест Сортировки пользователей по Имени.
+     */
+    @Test
+    public void sortNameLengthTest() {
+        //Arrange
+        List<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        //Act
+        new SortUser().sortNameLength(users);
+        //Assert
+        assertThat(users, contains(user2, user4, user1, user3));
+    }
+
+    /**
+     * Тест Сортировки пользователей по Имени с помощью Lambda Expression..
+     */
+    @Test
+    public void sortNameLengthByLambdaTest() {
+        //Arrange
+        List<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        //Act
+        new SortUser().sortNameLengthByLambda(users);
+        //Assert
+        assertThat(users, contains(user2, user4, user1, user3));
+    }
+
+    /**
+     * Тест Сортировки пользователей по полям имени и возрасту.
+     */
+    @Test
+    public void sortByAllFieldsTest() {
+        //Arrange
+        List<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        //Act
+        new SortUser().sortByAllFields(users);
+        //Assert
+        assertThat(users, contains(user4, user2, user3, user1));
+    }
+
+    /**
+     * Тест Сортировки пользователей по полям имени и возрасту с помощью Lambda Expression.
+     */
+    @Test
+    public void sortByAllFieldsByLambda() {
+        //Arrange
+        List<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        //Act
+        new SortUser().sortByAllFieldsByLambda(users);
+        //Assert
+        assertThat(users, contains(user4, user2, user3, user1));    }
 }
