@@ -11,6 +11,6 @@
     </parent>
 
     <modules>
-        <module>1_collectionframework</module>
+        <module>1_CollectionFramework</module>
     </modules>
 </project>
