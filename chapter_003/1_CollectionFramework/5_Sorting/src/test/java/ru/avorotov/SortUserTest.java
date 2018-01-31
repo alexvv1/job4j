@@ -43,22 +43,22 @@ public class SortUserTest {
     /**
      * Пользователь №1.
      */
-    private final User user1 = new User("Сергей", 25);
+    private final User user1 = new User("Sergej", 25);
 
     /**
      * Пользователь №2.
      */
-    private final User user2 = new User("Иван", 30);
+    private final User user2 = new User("Ivan", 30);
 
     /**
      * Пользователь №3.
      */
-    private final User user3 = new User("Сергей", 20);
+    private final User user3 = new User("Sergej", 20);
 
     /**
      * Пользователь №4.
      */
-    private final User user4 = new User("Иван", 25);
+    private final User user4 = new User("Ivan", 25);
 
     /**
      * Тест Сортировки пользователей по Имени.
