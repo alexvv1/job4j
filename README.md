@@ -1,4 +1,4 @@
-# alexvv
+# avorotov (Александр Воротов) alr18@mail.ru
 
 [![Build Status](https://travis-ci.org/alexvv1/job4j.svg?branch=master)](https://travis-ci.org/alexvv1/job4j)
 
