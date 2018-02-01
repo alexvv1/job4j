@@ -12,5 +12,6 @@
 
     <modules>
         <module>1_CollectionFramework</module>
+        <module>TestTaskCollectionsLite</module>
     </modules>
 </project>
