@@ -57,5 +57,20 @@ public class ListCompareTest {
         );
         assertThat(rst, is(1));
     }
+
+    /**
+     * Размер правого массива больше размера левого массива.
+     */
+    @Test
+    public void whenListSizeLeftLessRight() {
+        ListCompare compare = new ListCompare();
+        final List<Integer> left = Arrays.asList(2);
+        final List<Integer> right = Arrays.asList(1, 2, 3, 4);
+        int rst = compare.compare(
+                left,
+                right
+        );
+        assertThat(rst, is(1));
+    }
 }
 
