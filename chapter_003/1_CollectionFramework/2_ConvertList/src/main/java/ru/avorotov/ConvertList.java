@@ -33,20 +33,13 @@ public class ConvertList {
      */
     public int[][] toArray(List<Integer> list, int rows) {
         int lengthList = list.size();
-        int column;
-        if (lengthList % rows != 0) {
-            column = lengthList / rows + 1;
-        } else {
-            column = lengthList / rows;
-        }
+        int column = (int)Math.ceil((double) lengthList / rows);
         int[][] array = new int[rows][column];
         Iterator<Integer> iterator = list.iterator();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < column; j++) {
                 if (iterator.hasNext()) {
                     array[i][j] = iterator.next();
-                } else {
-                    array[i][j] = 0;
                 }
             }
         }

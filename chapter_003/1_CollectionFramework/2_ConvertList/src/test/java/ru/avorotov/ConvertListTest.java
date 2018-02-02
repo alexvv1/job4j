@@ -26,7 +26,7 @@ public class ConvertListTest {
         final List<Integer> resultList = convertList.toList(testArray);
         //Assert
         final List<Integer> expectedList = Arrays.asList(7, 4, 1, 8, 5, 2, 9, 6, 3);
-        assertThat(expectedList, is(resultList));
+        assertThat(resultList, is(expectedList));
     }
 
     /**
@@ -42,7 +42,7 @@ public class ConvertListTest {
         final int[][] testArray = convertList.toArray(testList, rows);
         //Assert
         final int[][] expectedArray = {{7, 4, 1, 8}, {5, 2, 9, 6}, {3, 7, 4, 0}, {4, 3, 0, 0}};
-        assertThat(expectedArray, is(testArray));
+        assertThat(testArray, is(expectedArray));
     }
 
     /**
@@ -63,6 +63,6 @@ public class ConvertListTest {
         List<Integer> result = convertList.convert(list);
         //Assert
         final Integer[] resultList = {6, 9, 4, 8, 2, 3, 4, 5, 6, 6, 222, 454, 5678};
-        assertThat(Arrays.asList(resultList), is(result));
+        assertThat(result, is(Arrays.asList(resultList)));
     }
 }
