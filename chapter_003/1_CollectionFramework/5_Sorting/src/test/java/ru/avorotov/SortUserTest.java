@@ -8,12 +8,10 @@ import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-
 /**
  * Тест сортировки пользователей.
  */
 public class SortUserTest {
-
     /**
      * Тестирование пользователя по возрасту в порядке возрастания.
      */
@@ -39,27 +37,22 @@ public class SortUserTest {
         assertThat(sortedUsers, contains(user2, user4, user1, user3));
 
     }
-
     /**
      * Пользователь №1.
      */
     private final User user1 = new User("Sergej", 25);
-
     /**
      * Пользователь №2.
      */
     private final User user2 = new User("Ivan", 30);
-
     /**
      * Пользователь №3.
      */
     private final User user3 = new User("Sergej", 20);
-
     /**
      * Пользователь №4.
      */
     private final User user4 = new User("Ivan", 25);
-
     /**
      * Тест Сортировки пользователей по Имени.
      */
@@ -76,7 +69,6 @@ public class SortUserTest {
         //Assert
         assertThat(users, contains(user2, user4, user1, user3));
     }
-
     /**
      * Тест Сортировки пользователей по Имени с помощью Lambda Expression..
      */
@@ -93,7 +85,6 @@ public class SortUserTest {
         //Assert
         assertThat(users, contains(user2, user4, user1, user3));
     }
-
     /**
      * Тест Сортировки пользователей по полям имени и возрасту.
      */
@@ -110,7 +101,6 @@ public class SortUserTest {
         //Assert
         assertThat(users, contains(user4, user2, user3, user1));
     }
-
     /**
      * Тест Сортировки пользователей по полям имени и возрасту с помощью Lambda Expression.
      */
