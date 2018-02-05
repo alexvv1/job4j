@@ -150,6 +150,8 @@
         <module name="TodoComment"/>
         <module name="UpperEll"/>
 
-    </module>
+        <module name="SuppressWarningsHolder" />
 
+    </module>
+    <module name="SuppressWarningsFilter" />
 </module>
