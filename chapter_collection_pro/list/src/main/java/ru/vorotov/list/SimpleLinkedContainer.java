@@ -2,6 +2,7 @@ package ru.vorotov.list;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Контейнер на базе связанного списка.
@@ -9,8 +10,6 @@ import java.util.Iterator;
  * @param <E> Тип хранимого значения.
  */
 public class SimpleLinkedContainer<E> implements SimpleContainer<E> {
-
-
     /**
      * Размер контейнера.
      */
@@ -60,8 +59,7 @@ public class SimpleLinkedContainer<E> implements SimpleContainer<E> {
     public E get(int index) {
         checkIndex(index);
         Node<E> node;
-        int i1 = size / 2;
-        if (index < i1) {
+        if (index < size / 2) {
             Node<E> x = first;
             for (int i = 0; i < index; i++) {
                 x = x.next;
@@ -109,7 +107,77 @@ public class SimpleLinkedContainer<E> implements SimpleContainer<E> {
     }
 
     /**
+     * Добавить в начало.
+     *
+     * @param value Добавляемый элемент.
+     */
+    public void addFirst(E value) {
+        final Node<E> firstOld = first;
+        final Node<E> newNode = new Node<>(null, firstOld, value);
+        first = newNode;
+        if (firstOld == null) {
+            last = newNode;
+        } else {
+            firstOld.prev = newNode;
+        }
+        size++;
+        modCount++;
+    }
+
+    /**
+     * Удаить из начала.
+     *
+     * @return Удаляемый элемент.
+     */
+    public E removeFirst() {
+        final Node<E> firstOld = this.first;
+        if (firstOld == null) {
+            throw new NoSuchElementException();
+        }
+        final E element = firstOld.item;
+        final Node<E> next = firstOld.next;
+        firstOld.item = null;
+        firstOld.next = null;
+        this.first = next;
+        if (next == null) {
+            last = null;
+        } else {
+            next.prev = null;
+        }
+        size--;
+        modCount++;
+        return element;
+    }
+
+    /**
+     * Удаить из конца.
+     *
+     * @return Удаляемый элемент.
+     */
+    public E removeLast() {
+        final Node<E> lastOld = last;
+        if (lastOld == null) {
+            throw new NoSuchElementException();
+        }
+        final E element = lastOld.item;
+        final Node<E> prev = lastOld.prev;
+        lastOld.item = null;
+        lastOld.prev = null; // help GC
+        last = prev;
+        if (prev == null) {
+            first = null;
+        } else {
+            prev.next = null;
+        }
+        size--;
+        modCount++;
+        return element;
+    }
+
+
+    /**
      * Нода - элемент связанного списка.
+     *
      * @param <E> Тип значения.
      */
     private static class Node<E> {
@@ -128,8 +196,9 @@ public class SimpleLinkedContainer<E> implements SimpleContainer<E> {
 
         /**
          * Конструктор.
-         * @param prev Ссылка на предыдущий элемент.
-         * @param next Ссылка на следующий элемент.
+         *
+         * @param prev    Ссылка на предыдущий элемент.
+         * @param next    Ссылка на следующий элемент.
          * @param element Значение.
          */
         Node(Node<E> prev, Node<E> next, E element) {
