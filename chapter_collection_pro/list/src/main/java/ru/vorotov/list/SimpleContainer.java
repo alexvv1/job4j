@@ -27,6 +27,4 @@ public interface SimpleContainer<T> extends Iterable<T> {
      * @return Размер контейнера.
      */
     int size();
-
-
 }
