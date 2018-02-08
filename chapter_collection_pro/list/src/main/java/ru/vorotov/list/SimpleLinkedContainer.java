@@ -86,6 +86,22 @@ public class SimpleLinkedContainer<E> implements SimpleContainer<E> {
     }
 
     /**
+     * Контейнер содержит элемент?
+     *
+     * @param element Элемент для поиска.
+     * @return Результат поиска.
+     */
+    @Override
+    public boolean contains(E element) {
+        boolean result = false;
+        Iterator<E> iterator = iterator();
+        while (iterator.hasNext() && !result) {
+            result = element.equals(iterator.next());
+        }
+        return result;
+    }
+
+    /**
      * Returns an iterator over elements of type {@code T}.
      *
      * @return an Iterator.
@@ -244,6 +260,9 @@ public class SimpleLinkedContainer<E> implements SimpleContainer<E> {
         @Override
         public E next() {
             checkModification();
+            if (cursor >= size) {
+                throw new NoSuchElementException();
+            }
             return get(cursor++);
         }
 

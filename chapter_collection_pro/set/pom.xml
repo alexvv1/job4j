@@ -15,5 +15,10 @@
 			<artifactId>genericpro</artifactId>
 			<version>1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>ru.avorotov</groupId>
+			<artifactId>list</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 </project>
