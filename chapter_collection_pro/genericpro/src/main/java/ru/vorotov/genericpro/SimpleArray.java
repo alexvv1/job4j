@@ -3,6 +3,7 @@ package ru.vorotov.genericpro;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 
 /**
@@ -94,6 +95,24 @@ public class SimpleArray<T> implements MyList<T> {
     @Override
     public int size() {
         return this.size;
+    }
+
+    /**
+     * Контейнер содержит элемент?
+     *
+     * @param element Элемент для поиска.
+     * @return Результат поиска.
+     */
+    @Override
+    public boolean contains(T element) {
+        boolean result = false;
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(element, container[i])) {
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
     /**

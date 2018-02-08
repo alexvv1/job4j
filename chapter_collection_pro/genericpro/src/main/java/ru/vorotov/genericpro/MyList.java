@@ -44,4 +44,11 @@ public interface MyList<T> extends Iterable<T> {
      * @return Размер контейнера.
      */
     int size();
+
+    /**
+     * Контейнер содержит элемент?
+     * @param element Элемент для поиска.
+     * @return Результат поиска.
+     */
+    boolean contains(T element);
 }

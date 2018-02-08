@@ -14,5 +14,6 @@
         <module>iterator</module>
         <module>genericpro</module>
         <module>list</module>
+        <module>set</module>
     </modules>
 </project>
