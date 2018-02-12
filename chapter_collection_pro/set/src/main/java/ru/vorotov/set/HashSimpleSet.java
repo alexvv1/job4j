@@ -1,28 +1,29 @@
 package ru.vorotov.set;
 
-import ru.vorotov.genericpro.SimpleArray;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.NoSuchElementException;
 
+/**
+ * HashSimpleSet.
+ * @param <E> Element type.
+ */
 public class HashSimpleSet<E> implements SimpleSet<E> {
+    /**
+     * Count of bucket.
+     */
+    private static final int AMOUNT_BUCKETS = 10;
+    /**
+     * Buckets.
+     */
+    private SimpleSet[] buckets = new SimpleSet[AMOUNT_BUCKETS];
 
-    private static final int COUNT_BUCKETS = 10;
-
-    private SimpleSet[] buckets;
-
+    /**
+     * Constructor.
+     */
     public HashSimpleSet() {
-        buckets = new SimpleSet[COUNT_BUCKETS];
-
-        for (int i = 0; i < COUNT_BUCKETS; i++) {
+        for (int i = 0; i < AMOUNT_BUCKETS; i++) {
             buckets[i] = new ArraySimpleSet();
         }
-
-
-
-
     }
 
     /**
@@ -33,8 +34,19 @@ public class HashSimpleSet<E> implements SimpleSet<E> {
      */
     @Override
     public boolean add(E element) {
-        return false;
+        return buckets[getBucket(element)].add(element);
     }
+
+    /**
+     * Get bucket by hashcode.
+     *
+     * @param o Object.
+     * @return int.
+     */
+    private int getBucket(Object o) {
+        return o.hashCode() % AMOUNT_BUCKETS;
+    }
+
 
     /**
      * Get size of the set.
@@ -43,7 +55,12 @@ public class HashSimpleSet<E> implements SimpleSet<E> {
      */
     @Override
     public int size() {
-        return 0;
+        int size = 0;
+        for (SimpleSet set : buckets) {
+            size += set.size();
+        }
+        return size;
+
     }
 
     /**
@@ -54,7 +71,7 @@ public class HashSimpleSet<E> implements SimpleSet<E> {
      */
     @Override
     public boolean contains(E element) {
-        return false;
+        return buckets[getBucket(element)].contains(element);
     }
 
     /**
@@ -64,11 +81,80 @@ public class HashSimpleSet<E> implements SimpleSet<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new HashSetIterator();
     }
 
+    /**
+     * Iterator of HashSimpleSet.
+     */
+    private class HashSetIterator implements Iterator<E> {
 
-    private static class Bucket{
+        /**
+         * Index of current bucket.
+         */
+        private int bucketIndex = 0;
 
+        /**
+         * Current iterator.
+         */
+        private Iterator<E> currentIterator = null;
+
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        @Override
+        public boolean hasNext() {
+            if (currentIterator == null) {
+                currentIterator = buckets[0].iterator();
+            }
+            boolean has;
+            do {
+                has = currentIterator.hasNext();
+                if (!has) {
+                    changeIterator();
+                }
+            } while (!has && bucketIndex < AMOUNT_BUCKETS - 1);
+            return has;
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        @Override
+        public E next() {
+            if (currentIterator == null) {
+                currentIterator = buckets[0].iterator();
+            }
+            E element = null;
+
+            do {
+                if (currentIterator.hasNext()) {
+                    element = currentIterator.next();
+                } else {
+                    changeIterator();
+                }
+            } while (element == null && bucketIndex < AMOUNT_BUCKETS - 1);
+
+            if (element == null) {
+                throw new NoSuchElementException();
+            }
+            return element;
+        }
+
+        /**
+         * Change current iterator to the next iterator.
+         */
+        private void changeIterator() {
+            if (bucketIndex < AMOUNT_BUCKETS - 1) {
+                currentIterator = buckets[++bucketIndex].iterator();
+            }
+        }
     }
 }
