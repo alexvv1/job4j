@@ -15,5 +15,6 @@
         <module>genericpro</module>
         <module>list</module>
         <module>set</module>
+        <module>tree</module>
     </modules>
 </project>
