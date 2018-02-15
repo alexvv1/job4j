@@ -1,6 +1,7 @@
 package ru.vorotov.tree;
 
 import org.hamcrest.core.Is;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -15,6 +16,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * SimpleTreeTest.
  */
 public class SimpleTreeTest {
+
+    /**
+     * Rule Expected Exception.
+     */
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
 
     /**
      *
@@ -94,8 +102,84 @@ public class SimpleTreeTest {
     }
 
     /**
-     * Rule Expected Exception.
+     *
      */
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    @Test
+    public void whenTreeHasOnlyRootThenIsBalanced() {
+        Tree<String> tree = new SimpleTree<>("0");
+
+        boolean result = tree.isBinary();
+
+        Assert.assertThat(result, Is.is(true));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void whenTreeHasTwoLeavesElementsThenIsBalanced() {
+        Tree<String> tree = new SimpleTree<>("0");
+        tree.add("0", "1");
+        tree.add("0", "2");
+
+        boolean result = tree.isBinary();
+
+        Assert.assertThat(result, Is.is(true));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void whenTreeHasOneLeafThenTreeIsNotBalanced() {
+        Tree<String> tree = new SimpleTree<>("0");
+        tree.add("0", "1");
+
+        boolean result = tree.isBinary();
+
+        Assert.assertThat(result, Is.is(false));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void whenAddBalancedTreeWithNineLeavesThenIsBalanced() {
+        SimpleTree<String> tree = new SimpleTree<>("0");
+        tree.add("0", "1");
+        tree.add("0", "3");
+        tree.add("1", "4");
+        tree.add("1", "5");
+        tree.add("3", "6");
+        tree.add("3", "7");
+        tree.add("6", "8");
+        tree.add("6", "9");
+
+        boolean result = tree.isBinary();
+
+        Assert.assertThat(result, Is.is(true));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void whenAddNotBalancedTreeWithNineLeavesThenIsNotBalanced() {
+        SimpleTree<String> tree = new SimpleTree<>("0");
+        tree.add("0", "1");
+        tree.add("0", "2");
+        tree.add("0", "3");
+        tree.add("1", "4");
+        tree.add("1", "5");
+        tree.add("4", "7");
+        tree.add("3", "6");
+        tree.add("6", "8");
+        tree.add("6", "9");
+
+        boolean result = tree.isBinary();
+
+        Assert.assertThat(result, Is.is(false));
+    }
+
+
 }
