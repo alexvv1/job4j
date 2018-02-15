@@ -25,4 +25,11 @@ public interface Tree<E extends Comparable<E>> extends Iterable<E> {
      * @return Node.
      */
     Optional<Node<E>> findBy(E value);
+
+    /**
+     * Check if the tree is binary. The number of children in the tree <= 2.
+     * @return Check if the tree is binary.
+     */
+    boolean isBinary();
+
 }
