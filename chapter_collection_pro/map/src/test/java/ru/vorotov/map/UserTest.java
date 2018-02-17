@@ -59,6 +59,31 @@ public class UserTest {
     }
 
     /**
+     * Equals переопределен. Оба user добавлены в Map.
+     * т.к. По умолчанию Hashcode для разные инстансов возвращает всегда разные значения,
+     * добавляемые user будут запианы в разные backet.
+     * не будут использованы преимущества HashMap.
+     * Следовательно объекты будут добавлены в коллекцию как разные.
+     */
+    @Test
+    @SuppressWarnings("checkstyle:magicnumber")
+    public void whenOverrideEquals() {
+        User user1 = new UserEquals("Name", 1, LocalDate.of(1996, 12, 15));
+        User user2 = new UserEquals("Name", 1, LocalDate.of(1996, 12, 15));
+        Map<User, Object> testMap = new HashMap<>();
+        testMap.put(user1, new Object());
+        testMap.put(user2, new Object());
+
+        printMap(testMap);
+
+        /**
+         * Key:ru.vorotov.map.UserHashCode@8ae2c778; Value:java.lang.Object@50134894
+         * Key:ru.vorotov.map.UserHashCode@8ae2c778; Value:java.lang.Object@2957fcb0
+         */
+    }
+
+
+    /**
      * HashCode и Equals переопределены. В Map добавлен только првый user.
      * Т.к. по hashcode и equals вставляемые user равны.
      */
