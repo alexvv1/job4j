@@ -1,6 +1,6 @@
 package ru.vorotov.map;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -15,7 +15,7 @@ public class UserHashCode extends User {
      * @param children Children.
      * @param birthday Birthday.
      */
-    public UserHashCode(String name, int children, Calendar birthday) {
+    public UserHashCode(String name, int children, LocalDate birthday) {
         super(name, children, birthday);
     }
 

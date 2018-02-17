@@ -1,6 +1,6 @@
 package ru.vorotov.map;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  * User.
@@ -17,7 +17,7 @@ public class User {
     /**
      * Birthday.
      */
-    private Calendar birthday;
+    private LocalDate birthday;
 
     /**
      * Ctor.
@@ -25,7 +25,7 @@ public class User {
      * @param children Children.
      * @param birthday Birthday.
      */
-    public User(String name, int children, Calendar birthday) {
+    public User(String name, int children, LocalDate birthday) {
         this.name = name;
         this.children = children;
         this.birthday = birthday;
@@ -51,7 +51,7 @@ public class User {
      * Birthday.
      * @return Birthday.
      */
-    public Calendar getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 }
