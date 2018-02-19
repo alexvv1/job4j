@@ -1,9 +1,6 @@
 package ru.vorotov.genericpro;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
+import java.util.*;
 
 /**
  * Реализация контейнера на массивах.
@@ -70,7 +67,7 @@ public class SimpleArray<T> implements MyList<T> {
         if (index != this.size() - 1) {
             System.arraycopy(container, index + 1, container, index, this.size() - index - 1);
         }
-        container[size--] = null;
+        container[--size] = null;
     }
 
     /**
@@ -94,6 +91,24 @@ public class SimpleArray<T> implements MyList<T> {
     @Override
     public int size() {
         return this.size;
+    }
+
+    /**
+     * Контейнер содержит элемент?
+     *
+     * @param element Элемент для поиска.
+     * @return Результат поиска.
+     */
+    @Override
+    public boolean contains(T element) {
+        boolean result = false;
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(element, container[i])) {
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
     /**
@@ -122,9 +137,7 @@ public class SimpleArray<T> implements MyList<T> {
      */
     private void extendArr() {
         if (container.length == size) {
-            final Object[] oldArr = container;
-            container = new Object[this.size() * 2];
-            System.arraycopy(oldArr, 0, container, 0, oldArr.length);
+            container = Arrays.copyOf(container, this.size() * 2);
         }
     }
 
