@@ -2,13 +2,15 @@ package ru.vorotov.map;
 
 /**
  * Simple map intarface.
+ *
  * @param <K> Key type.
  * @param <V> Value type.
  */
-public interface SimpleMap<K,V> {
+public interface SimpleMap<K, V> {
     /**
      * Insert element.
-     * @param key Key.
+     *
+     * @param key   Key.
      * @param value Value.
      * @return true - insert.
      */
@@ -16,6 +18,7 @@ public interface SimpleMap<K,V> {
 
     /**
      * Get value by key.
+     *
      * @param key Key Type.
      * @return Value.
      */
@@ -23,6 +26,7 @@ public interface SimpleMap<K,V> {
 
     /**
      * Removes the mapping for a key from this map if it is present.
+     *
      * @param key Removes the mapping for a key from this map if it is present.
      * @return boolean.
      */
